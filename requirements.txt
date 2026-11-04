@@ -1,0 +1,17 @@
+--extra-index-url https://download.pytorch.org/whl/cu124
+torch==2.4.0+cu124
+torchvision==0.19.0+cu124
+setuptools==68.2.2
+datasets==3.1.0
+pytorch-lightning==1.9.5
+wandb
+opencv-python
+matplotlib
+scikit-learn
+numpy
+pyyaml
+addict
+pandas
+plyfile
+tqdm
+open3d

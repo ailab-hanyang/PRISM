@@ -1,0 +1,122 @@
+# PRISM Dataset PKL Converter Configuration
+#
+# Required environment variables:
+#   export PRISM_DATASET_ROOT=/path/to/data    # Dataset root
+#   export PRISM_DEVKIT_ROOT=/path/to/PRISM    # Project root
+
+# ===== Dataset Paths =====
+dataset_bases:
+    - "0106_dataset"
+    - "0112_dataset"
+    - "0119_1_dataset"
+    - "0119_2_dataset"
+    - "0120_dataset"
+    - "0124_dataset"
+    - "0128_1_dataset"
+    - "0128_2_dataset"
+    - "0128_3_dataset"
+    - "0128_4_dataset"
+    - "0128_5_dataset"
+    - "0128_6_dataset"
+    - "0128_7_dataset"
+    - "0129_1_dataset"
+    - "0129_2_dataset"
+    - "0129_3_dataset"
+    - "0129_4_dataset"
+    - "0202_dataset"
+    - "0210_1_dataset"
+    - "0210_2_dataset"
+    - "0318_1_dataset"
+    - "0318_2_dataset"
+    - "0318_3_dataset"
+    - "0318_4_dataset"
+    - "0318_5_dataset"
+    - "0318_6_dataset"
+    - "0318_7_dataset"
+    - "0318_8_dataset"
+    - "0318_9_dataset"
+    - "0318_10_dataset"
+    - "0318_11_dataset"
+    - "0318_12_dataset"
+    - "0318_13_dataset"
+    - "0327_1_dataset"
+    - "0327_2_dataset"
+    - "0327_3_dataset"
+    - "0327_4_dataset"
+    - "0327_5_dataset"
+    - "0327_6_dataset"
+    - "0327_7_dataset"
+    - "0327_8_dataset"
+    - "0327_9_dataset"
+    - "0327_10_dataset"
+    - "0327_11_dataset"
+
+# ===== Train / Val Split =====
+# val_entire_folders: Assign entire folders to val
+# val_sequences: Assign specific sequences within folders to val
+# val_intra_sequences: Split sequences internally (last N% -> val)
+# All others -> train
+
+val_entire_folders:
+    - "0327_3_dataset"      # belgian_block / dry
+    - "0129_2_dataset"      # asphalt / damp
+    - "0318_3_dataset"      # asphalt / dry
+    - "0318_6_dataset"      # asphalt / dry
+    - "0327_1_dataset"      # asphalt / dry
+    - "0128_3_dataset"      # concrete / damp
+
+val_intra_sequences:
+    "0106_dataset":     # asphalt / dry
+        "sequence_001": 0.2
+    "0112_dataset":     # asphalt / snow_covered
+        "sequence_001": 0.3
+    "0119_2_dataset":   # asphalt / damp
+        "sequence_001": 0.2
+    "0120_dataset":     # asphalt / dry
+        "sequence_001": 0.2
+    "0124_dataset":     # asphalt / slush
+        "sequence_001": 0.3
+    "0129_1_dataset":   # asphalt / damp
+        "sequence_001": 0.2
+    "0210_1_dataset":   # asphalt+concrete / damp
+        "sequence_001": 0.2
+    "0318_9_dataset":   # asphalt+concrete / wet
+        "sequence_001": 0.2
+    "0318_10_dataset":  # asphalt+concrete / wet
+        "sequence_001": 0.2
+    "0318_13_dataset":  # asphalt / wet
+        "sequence_001": 0.2
+    "0128_5_dataset":   # belgian_block / snow_covered
+        "sequence_001": 0.2
+    "0327_8_dataset":   # gravel / dry
+        "sequence_001": 0.3
+    "0327_9_dataset":   # gravel / dry
+        "sequence_001": 0.3        
+
+# ===== Ground Truth =====
+elevation_map_dir: "elevation_map_10cmx10cm"
+classification_label_path: "labels.json"
+
+# ===== Output Directory =====
+output_dir: "pkl"
+
+# ===== Valid Cell Filtering =====
+filter:
+  min_valid_ratio: 0.6
+  enable_flatness_filter: false
+  max_x_slope_mean: 5.0
+  max_z_range: 40.0
+
+# ===== Calibration =====
+calibration_path: "config/calibration.yaml"
+
+# ===== Dataset Version =====
+dataset_version: "2026-04-26"
+
+# ===== Topic Settings =====
+topics:
+  polar_angles:
+    - "0d"
+    - "45d"
+    - "90d"
+    - "135d"

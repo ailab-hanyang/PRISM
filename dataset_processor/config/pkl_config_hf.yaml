@@ -1,0 +1,43 @@
+# PRISM Dataset PKL Converter Configuration for HuggingFace Downloads
+#
+# For datasets downloaded from HuggingFace where train/val are already separated
+#
+# Required environment variables:
+#   export PRISM_DATASET_ROOT=/path/to/data    # Dataset root (includes train/, val/ folders)
+#   export PRISM_DEVKIT_ROOT=/path/to/PRISM    # Project root
+
+# ===== Data Structure =====
+# PRISM_DATASET_ROOT/
+#   ├── train/
+#   │   ├── 0106_dataset/
+#   │   ├── 0112_dataset/
+#   │   └── ...
+#   └── val/
+#       ├── 0128_3_dataset/
+#       ├── 0129_2_dataset/
+#       └── ...
+
+# ===== Ground Truth =====
+elevation_map_dir: "elevation_map_10cmx10cm"
+classification_label_path: "labels.json"
+
+# ===== Output Directory =====
+output_dir: "pkl"
+
+# ===== Valid Cell Filtering =====
+filter:
+  min_valid_ratio: 0.6
+
+# ===== Calibration =====
+calibration_path: "config/calibration.yaml"
+
+# ===== Dataset Version =====
+dataset_version: "2026-05-06"
+
+# ===== Topic Settings =====
+topics:
+  polar_angles:
+    - "0d"
+    - "45d"
+    - "90d"
+    - "135d"

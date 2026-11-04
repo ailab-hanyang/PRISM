@@ -1,0 +1,41 @@
+# Camera and Sensor Calibration Parameters
+# Convention: X_to_Y * X_points = Y_points
+
+# RGB Camera Intrinsic Parameters
+rgb_cam_intrinsic:
+  fx: 2375.102846693615
+  fy: 2379.232445036520
+  cx: 1222.495064727078
+  cy: 988.7008241766049
+  distortion: []  # No distortion coefficients
+
+# Polar Camera Intrinsic Parameters (placeholder for future use)
+polar_cam_intrinsic:
+  fx: 2372.307310209718
+  fy: 2383.619120341301
+  cx: 1205.393800084016
+  cy: 987.4589504466086
+  distortion: []
+
+polar_cam_intrinsic_1224x1024:
+  fx: 1186.153655104859
+  fy: 1191.8095601706505
+  cx: 602.696900042008
+  cy: 493.7294752233043
+  distortion: []
+
+# Ego to Lidar transformation (4x4 SE(3) matrix)
+# Transforms points from Ego (vehicle) frame to Lidar frame
+ego_to_lidar:
+  - [0.9999,  0.0000, -0.0117, -1.4328]
+  - [0.0001,  0.9999,  0.0101, -0.0149]
+  - [0.0117, -0.0101,  0.9999, -1.4768]
+  - [0     ,  0     ,  0     ,  1.0000]
+
+# Lidar to Ego transformation (4x4 SE(3) matrix)
+# Transforms points from Lidar frame to Ego (vehicle) frame
+lidar_to_ego:
+  - [ 0.9999, 0.0001,  0.0117, 1.4500]
+  - [      0, 0.9999, -0.0101,      0]
+  - [-0.0117, 0.0101,  0.9999, 1.4600]
+  - [      0,      0,       0, 1.0000]

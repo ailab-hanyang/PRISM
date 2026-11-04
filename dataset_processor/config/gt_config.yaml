@@ -1,0 +1,97 @@
+# Batch Preprocessing Configuration
+
+# ===== Input Paths =====
+input:
+  dataset_bases:
+    # Train datasets
+    - "train/0106_dataset"
+    - "train/0112_dataset"
+    - "train/0119_1_dataset"
+    - "train/0119_2_dataset"
+    - "train/0120_dataset"
+    - "train/0124_dataset"
+    - "train/0128_2_dataset"
+    - "train/0128_4_dataset"
+    - "train/0128_6_dataset"
+    - "train/0129_1_dataset"
+    - "train/0129_3_dataset"
+    - "train/0129_4_dataset"
+    - "train/0202_dataset"
+    - "train/0210_1_dataset"
+    - "train/0210_2_dataset"
+    - "train/0318_1_dataset"
+    - "train/0318_2_dataset"
+    - "train/0318_4_dataset"
+    - "train/0318_5_dataset"
+    - "train/0318_7_dataset"
+    - "train/0318_8_dataset"
+    - "train/0318_9_dataset"
+    - "train/0318_10_dataset"
+    - "train/0318_11_dataset"
+    - "train/0318_12_dataset"
+    - "train/0318_13_dataset"
+    - "train/0327_1_dataset"
+    - "train/0327_2_dataset"
+    - "train/0327_5_dataset"
+    - "train/0327_6_dataset"
+    - "train/0327_7_dataset"
+    - "train/0327_8_dataset"
+    - "train/0327_10_dataset"
+    - "train/0327_11_dataset"
+    # Val datasets
+    - "val/0106_dataset"
+    - "val/0112_dataset"
+    - "val/0119_2_dataset"
+    - "val/0120_dataset"
+    - "val/0124_dataset"
+    - "val/0128_1_dataset"
+    - "val/0128_3_dataset"
+    - "val/0128_5_dataset"
+    - "val/0128_7_dataset"
+    - "val/0129_1_dataset"
+    - "val/0129_2_dataset"
+    - "val/0210_1_dataset"
+    - "val/0318_3_dataset"
+    - "val/0318_6_dataset"
+    - "val/0318_9_dataset"
+    - "val/0318_10_dataset"
+    - "val/0318_13_dataset"
+    - "val/0327_3_dataset"
+    - "val/0327_4_dataset"
+    - "val/0327_9_dataset"
+
+# ===== Coordinate Transform (LiDAR → Camera, meters) =====
+coordinate_transform:
+  offset_x: 0.0       # x-axis offset (m)
+  offset_y: 0.0       # y-axis offset (m)
+  offset_z: 1.8       # z-axis offset (m)
+
+# ===== ROI Settings (Camera coordinate system, cm) =====
+# Camera coordinates (ground projection): x=forward(longitudinal), y=lateral, z=vertical
+roi:
+  x_min: 700.0        # Start point (cm) - 7.00m
+  x_max: 1200.0       # End point (cm) - 11.92m
+  y_min: -200.0       # Left (cm)
+  y_max: 200.0        # Right (cm)
+  z_min: -20.0        # Bottom (cm) - ground ±20cm
+  z_max: 20.0         # Top (cm)
+
+roi_v2:
+  z_min: -200.0       # Bottom (cm) - ground ±200cm
+  z_max: 200.0        # Top (cm)
+
+# ===== Grid Resolution (cm) =====
+grid:
+  resolution_x: 10.0  # 10cm (forward)
+  resolution_y: 10.0  # 10cm (lateral)
+  resolution_z: 1.0   # 1cm (vertical)
+
+gt_folder_name: "elevation_map_10cmx10cm"
+
+include_normal_gt: True  # Include normal vector GT
+
+# ===== Visualization Settings =====
+visualization:
+  pkl_path: "0106_dataset/sequence_001/elevation_map_10cmx10cm/1767667361_605.pkl"
+  pcd_path: "0106_dataset/sequence_001/lidar_accum_scan/1767667361_605.pcd"
+  output_path: "visualization_output.png"
