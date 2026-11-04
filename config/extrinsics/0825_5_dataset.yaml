@@ -1,0 +1,36 @@
+# Refined (normal45, 2026-10-15): polar camera height only, +3.73 cm in ego z (92.72 -> 96.45 cm).
+# Source: RGB<->polar NCC over LiDAR points (RGB pose fixed), 144 frames of 0825_1-6; same optimum from the yaml start
+# and from the RGB-height start (96.45 / 96.48 cm), bootstrap std 0.10 cm; on 0210_1 the same method returns a +3.3 cm
+# displaced start to within 0.2 cm of its yaml. Rotation / x / y left at the original values. Previous polar z 0.92715445: git 40e209d.
+# Extrinsics: cam_to_lidar (LiDAR working frame is rot_z_180)
+# Source: 0825/real_calib capture (bag rosbag2_2026_08_26-00_50_59), checkerboard-LiDAR fit.
+# rgb: 40 inliers of 51, center 0.0428 m, normal 2.001 deg, reproj 11.94 px
+# polar: 36 inliers of 53, center 0.0403 m, normal 2.413 deg, reproj 9.86 px
+# rgb-polar 1.062 deg / 0.0543 m, matching the 0724 rig relationship (1.142 deg / 0.0536 m).
+# Supersedes the 0825/calib fit that was here before (0825_1_dataset.yaml.bak): that board only
+# returned below 23 deg incidence, leaving one 0.76 m depth shell and a 0.0746 m rgb-polar baseline.
+
+rgb_cam_to_lidar:
+  - [-0.10791048, 0.12809470, 0.98587376, 0.87604315]
+  - [-0.99412688, -0.00573381, -0.10806884, -0.23513981]
+  - [-0.00819024, -0.99174537, 0.12796112, -0.48709617]
+  - [0.00000000, 0.00000000, 0.00000000, 1.00000000]
+
+polar_cam_to_lidar:
+  - [-0.10225264, 0.12731614, 0.98657742, 0.87012019]
+  - [-0.99471389, -0.02247522, -0.10019554, -0.19256160]
+  - [0.00941704, -0.99160752, 0.12894129, -0.48347783]
+  - [0.00000000, 0.00000000, 0.00000000, 1.00000000]
+
+# cam_to_ego = lidar_to_ego @ cam_to_lidar
+rgb_cam_to_ego:
+  - [-0.10810736, 0.11648211, 0.98729161, 2.32025862]
+  - [-0.99399442, 0.00428466, -0.10934683, -0.23019999]
+  - [-0.01696716, -0.99318355, 0.11531936, 0.96033720]
+  - [0.00000000, 0.00000000, 0.00000000, 1.00000000]
+
+polar_cam_to_ego:
+  - [-0.10224397, 0.11570339, 0.98800754, 2.31438304]
+  - [-0.99475919, -0.01245730, -0.10148382, -0.18766055]
+  - [0.00056588, -0.99320569, 0.11637070, 0.96445445]
+  - [0.00000000, 0.00000000, 0.00000000, 1.00000000]
